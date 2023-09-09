@@ -77,7 +77,7 @@ class _SignUpPageState extends State<SignUpPage> with SignInPageMixin {
                             actions: <Widget>[
                               TextButton(
                                 onPressed: () {
-                                  auth.signOut();
+                                  context.read<AuthBloc>().add(SignOutEvent());
                                 },
                                 child: const Text(
                                   'Back to Sign In Page',

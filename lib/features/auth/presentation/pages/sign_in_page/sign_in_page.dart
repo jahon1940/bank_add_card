@@ -97,29 +97,19 @@ class _SignInPageState extends State<SignInPage> with SignInPageMixin {
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 150, right: 150),
+                      Center(
                         child: GestureDetector(
                           onTap: () {
                             context.read<AuthBloc>().add(SignUpGoogleEvent());
                           },
-                          child: Container(
-                            height: 88,
-                            clipBehavior: Clip.antiAlias,
-                            decoration: ShapeDecoration(
-                              color: AppColors.mainColor.withOpacity(0.1),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(50),
-                              ),
+                          child: CircleAvatar(
+                            radius: 50,
+                            backgroundColor: AppColors.mainColor.withOpacity(0.1),
+                            child: Padding(
+                              padding: const EdgeInsets.all(10),
+                              child: SvgPicture.asset(AppImages.google),
                             ),
-                            child: Center(
-                              child: Padding(
-                                padding: const EdgeInsets.all(12),
-                                child: SvgPicture.asset(
-                                  AppImages.google,
-                                ),
-                              ),
-                            ),
+
                           ),
                         ),
                       ),

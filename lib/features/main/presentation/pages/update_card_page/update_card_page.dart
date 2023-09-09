@@ -37,10 +37,27 @@ class UpdateCardPageState extends State<UpdateCardPage> with MainPageMixin {
         actions: [
           IconButton(
               onPressed: () {
-                context
-                    .read<MainBloc>()
-                    .add(DeleteCardEvent(cardKey: widget.cardKey));
-                Navigator.pushNamed(context, RouteName.mainPage);
+                showDialog<String>(
+                  context: context,
+                  builder: (BuildContext context) => AlertDialog(
+                    title: const Text('Are you sure?'),
+                    actions: <Widget>[
+                      TextButton(
+                        onPressed: () {
+                          context
+                              .read<MainBloc>()
+                              .add(DeleteCardEvent(cardKey: widget.cardKey));
+                          Navigator.pushNamed(context, RouteName.mainPage);
+                        },
+                        child: const Text(
+                          'Yes',
+                          style: TextStyle(color: AppColors.mainColor),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+
               },
               icon: const Icon(
                 Icons.delete,

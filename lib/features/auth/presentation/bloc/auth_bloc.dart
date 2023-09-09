@@ -14,6 +14,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<SignInEmailEvent>(_signWithEmail);
     on<SignUpEmailEvent>(_signUpWithEmail);
     on<SignUpGoogleEvent>(_signUpWithGoogle);
+    on<SignOutEvent>(_signOut);
   }
 
   Future<void> _signWithEmail(
@@ -88,6 +89,20 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     } catch (e, s) {
       debugPrint('$e, $s');
       return;
+    }
+  }
+
+  Future<void> _signOut(
+      SignOutEvent event, Emitter<AuthState> emit) async {
+    emit(state.copyWith(firebaseStatus: Status.loading));
+    try {
+      await FirebaseAuth.instance.signOut();
+      emit(state.copyWith(firebaseStatus: Status.success));
+    } on FirebaseAuthException catch (e) {
+      if (kDebugMode) {
+        print('error----${e.code}');
+      }
+      emit(state.copyWith(firebaseStatus: Status.error));
     }
   }
 

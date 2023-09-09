@@ -38,4 +38,11 @@ class SignUpEmailEvent extends AuthEvent {
   }
 }
 
+class SignOutEvent extends AuthEvent{
+  @override
+  List<Object?> get props {
+    return [];
+  }
+}
+
 

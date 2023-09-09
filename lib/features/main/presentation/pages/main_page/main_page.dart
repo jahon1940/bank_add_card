@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:empty_feature_folder/constants/constants.dart';
+import 'package:empty_feature_folder/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:empty_feature_folder/features/main/presentation/mixin/mixin.dart';
 import 'package:empty_feature_folder/features/main/presentation/pages/update_card_page/update_card_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -49,7 +50,7 @@ class _MainPageState extends State<MainPage> with MainPageMixin {
                   color: Colors.red,
                 ),
                 onPressed: () {
-                  auth.signOut();
+                  context.read<AuthBloc>().add(SignOutEvent());
                 },
               )
             ],
@@ -136,12 +137,19 @@ class _MainPageState extends State<MainPage> with MainPageMixin {
         onCreditCardWidgetChange: (CreditCardBrand creditCardBrand) {},
         customCardTypeIcons: <CustomCardTypeIcon>[
           CustomCardTypeIcon(
-            cardType: CardType.mastercard,
+            cardType: CardType.uzcard,
             cardImage: Image.asset(
-              'icons/mastercard.png',
+              'assets/icons/uzcard.png',
               height: 48,
               width: 48,
-              package: 'flutter_credit_card',
+            ),
+          ),
+          CustomCardTypeIcon(
+            cardType: CardType.humo,
+            cardImage: Image.asset(
+              'assets/icons/humo.png',
+              height: 48,
+              width: 48,
             ),
           ),
         ],
