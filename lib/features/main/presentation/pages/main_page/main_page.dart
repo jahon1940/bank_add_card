@@ -9,6 +9,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_credit_card/credit_card_brand.dart';
 import 'package:flutter_credit_card/credit_card_widget.dart';
 import 'package:flutter_credit_card/custom_card_type_icon.dart';
+import '../../../../../routes/name_routes.dart';
 import '../../bloc/main_bloc.dart';
 import '../add_card_page/add_card_page.dart';
 
@@ -51,6 +52,8 @@ class _MainPageState extends State<MainPage> with MainPageMixin {
                 ),
                 onPressed: () {
                   context.read<AuthBloc>().add(SignOutEvent());
+                  Navigator.pushNamed(
+                      context, RouteName.signIn);
                 },
               )
             ],

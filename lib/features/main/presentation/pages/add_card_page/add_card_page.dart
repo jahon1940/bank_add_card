@@ -141,7 +141,7 @@ class AddCardPageState extends State<AddCardPage> with MainPageMixin {
                               cardNumber: cardNumber,
                               expiryDate: expiryDate,
                               cvvCode: cvvCode,
-                              theme: useBackgroundImage!));
+                              theme: useBackgroundImage??useBackgroundImage.toString()));
 
                           Navigator.pushNamed(context, RouteName.mainPage);
                         }),
