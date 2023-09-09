@@ -85,7 +85,7 @@ class _SignInPageState extends State<SignInPage> with SignInPageMixin {
                       ),
                       const Center(
                         child: Padding(
-                          padding: EdgeInsets.only(top: 20, bottom: 20),
+                          padding: EdgeInsets.only(top: 10, bottom: 20),
                           child: Text(
                             '- OR Continue with -',
                             textAlign: TextAlign.center,
@@ -115,7 +115,7 @@ class _SignInPageState extends State<SignInPage> with SignInPageMixin {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(
-                            top: 20, left: 110, right: 20),
+                            top: 10, left: 110, right: 20),
                         child: RichText(
                             text: TextSpan(
                                 text: "Create An Account ",

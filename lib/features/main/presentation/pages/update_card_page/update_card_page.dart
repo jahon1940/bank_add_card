@@ -187,7 +187,7 @@ class UpdateCardPageState extends State<UpdateCardPage> with MainPageMixin {
                               cardNumber: cardNumber,
                               expiryDate: expiryDate,
                               cvvCode: cvvCode,
-                              theme: useBackgroundImage!,
+                              theme: useBackgroundImage??useBackgroundImage.toString(),
                               cardKey: widget.cardKey));
 
                           Navigator.pushNamed(context, RouteName.mainPage);
